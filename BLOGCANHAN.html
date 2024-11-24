@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu ứng nút cuộn ra văn bản</title>
+    <style>
+        /* Định dạng cho nút */
+        .zoom-button {
+            padding: 10px 20px;
+            background-color: lightblue;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-button:hover {
+            transform: scale(1.1); /* Tăng kích thước nút khi hover */
+        }
+
+        /* Định dạng cho các thanh văn bản */
+        .text-container {
+            margin-top: 20px;
+            overflow: hidden; /* Ẩn phần nội dung khi chưa cuộn */
+            max-height: 0; /* Đặt chiều cao ban đầu là 0 */
+            transition: max-height 0.5s ease; /* Hiệu ứng cuộn */
+        }
+
+        /* Khi được mở, thanh văn bản sẽ có chiều cao tự động */
+        .text-container.open {
+            max-height: 500px; /* Bạn có thể điều chỉnh chiều cao tối đa này theo ý muốn */
+        }
+
+        .text-item {
+            padding: 10px;
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="zoom-button" onclick="toggleText()">Nhấn để cuộn ra văn bản</button>
+
+    <div class="text-container" id="textContainer">
+        <div class="text-item">Text1</div>
+        <div class="text-item">Text2</div>
+        <div class="text-item">Text3</div>
+    </div>
+
+    <script>
+        function toggleText() {
+            var textContainer = document.getElementById('textContainer');
+            textContainer.classList.toggle('open'); // Thay đổi class để hiển thị/ẩn nội dung
+        }
+    </script>
+
+</body>
+</html>
